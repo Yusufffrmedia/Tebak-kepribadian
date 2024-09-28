@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tes Kepribadian</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+
+        .input-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-container">
+        <input type="text" id="namaInput" placeholder="Masukkan nama Anda">
+    </div>
+    <button onclick="hasilkanKepribadian()">Hasilkan</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        const kepribadianList = [
+            "Kreatif", "Bijaksana", "Optimis", "Empatik", "Berani",
+            "Rendah hati", "Analitis", "Terbuka", "Pengasih", "Berkomitmen",
+            "Sabar", "Humoris", "Konsisten", "Pemimpin", "Adaptif",
+            "Visioner", "Perfeksionis", "Jujur", "Penuh energi", "Mandiri",
+            "Rasional", "Setia", "Disiplin", "Fleksibel", "Pragmatis"
+        ];
+
+        function hasilkanKepribadian() {
+            const nama = document.getElementById("namaInput").value;
+            const resultDiv = document.getElementById("result");
+            
+            if (nama === "") {
+                resultDiv.innerHTML = "Silakan masukkan nama terlebih dahulu.";
+                return;
+            }
+            
+            const kepribadian = kepribadianList.sort(() => 0.5 - Math.random()).slice(0, 5);
+            resultDiv.innerHTML = `Hai ${nama}, kepribadianmu seperti ini: <br> ${kepribadian.join(", ")}.`;
+        }
+    </script>
+</body>
+</html>
